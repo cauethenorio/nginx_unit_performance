@@ -1,4 +1,4 @@
-FROM nginx/unit:1.29.1-python3.11
+FROM python:3.11-slim
 
 ENV PYTHONUNBUFFERED 1
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -9,9 +9,9 @@ ADD ./requirements.txt ./
 
 RUN apt update && apt install -y python3-pip    \
     && pip3 install -r ./requirements.txt \
+    && pip3 install uwsgi \
     && rm -rf /var/lib/apt/lists/*
 
+EXPOSE 8000
 
-ADD config.json /docker-entrypoint.d/config.json
-
-
+CMD ["uwsgi", "--show-config", "--ini", "/app/uwsgi.ini"]

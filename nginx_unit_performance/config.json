@@ -1,18 +1,17 @@
 {
-  "listeners":{
-	  "*:8080":{
-	    "pass": "applications/flask" 
-	  }
-
-
+  "listeners": {
+    "0.0.0.0:8080": {
+      "pass": "applications/flask"
+    }
   },
-
   "applications": {
-     "flask": {
-         "type": "python",
-	 "path": "/www/",
-	 "module": "app"
-     }
+    "flask": {
+      "type": "python 3.11",
+      "path": "/app/",
+      "module": "app",
+      "callable": "app",
+      "processes": 4,
+      "protocol": "wsgi"
+    }
   }
-
 }

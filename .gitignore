@@ -1,0 +1,10 @@
+.idea
+.vscode
+*.pyc
+.DS_Store
+._.DS_Store
+._*
+._*.css
+._*.jpg
+node_modules
+.ruff_cache
